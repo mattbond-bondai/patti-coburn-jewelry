@@ -31,8 +31,8 @@ jobs:
 
       - name: Build static site
         env:
-          NEXT_PUBLIC_BASE_PATH: /patti-coburn-jewelry
-          NEXT_PUBLIC_SITE_URL: https://mattbond-bondai.github.io/patti-coburn-jewelry
+          NEXT_PUBLIC_BASE_PATH: ''
+          NEXT_PUBLIC_SITE_URL: https://patticoburnjewelry.com
         run: npm run build
 
       - name: Upload Pages artifact
