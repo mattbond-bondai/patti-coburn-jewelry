@@ -3,7 +3,9 @@ import Image from 'next/image'
 import Scripture from '@/components/scripture'
 import StoneGrid from '@/components/stone-grid'
 import JSONLD from '@/components/jsonld'
-import { asset, pieces, siteConfig } from '@/data/site'
+import BuyButtons from '@/components/buy-buttons'
+import { asset, siteConfig } from '@/data/site'
+import { allProducts, formatPrice, productImage } from '@/data/products'
 
 export const metadata: Metadata = {
   title: 'A Glimpse of Heaven Bracelet | The Twelve Foundation Stones of Revelation 21',
@@ -18,7 +20,7 @@ export const metadata: Metadata = {
 }
 
 export default function GlimpseOfHeavenPage() {
-  const piece = pieces.find((p) => p.slug === 'glimpse-of-heaven-bracelet')!
+  const piece = allProducts.find((p) => p.slug === 'glimpse-of-heaven-bracelet')!
 
   return (
     <>
@@ -43,7 +45,7 @@ export default function GlimpseOfHeavenPage() {
           <div className="mx-auto w-full max-w-sm space-y-6">
             <div className="overflow-hidden rounded-3xl bg-surface shadow-soft ring-1 ring-border">
               <Image
-                src={piece.image}
+                src={productImage(piece)}
                 alt={piece.alt}
                 width={576}
                 height={1024}
@@ -90,7 +92,10 @@ export default function GlimpseOfHeavenPage() {
             </div>
 
             <div className="mt-8 rounded-2xl border border-border bg-surface p-6 shadow-card">
-              <h2 className="font-serif text-xl text-text">Details</h2>
+              <div className="flex items-baseline justify-between gap-4">
+                <h2 className="font-serif text-xl text-text">Details</h2>
+                <p className="text-lg text-primary">{formatPrice(piece.price)}</p>
+              </div>
               <ul className="mt-3 space-y-2 text-sm text-muted">
                 {piece.details.map((d) => (
                   <li key={d} className="flex items-start gap-2">
@@ -99,12 +104,9 @@ export default function GlimpseOfHeavenPage() {
                   </li>
                 ))}
               </ul>
-              <a
-                href={`mailto:${siteConfig.email}?subject=A Glimpse of Heaven bracelet order`}
-                className="mt-6 inline-block rounded-full bg-primary px-6 py-3 text-sm font-medium text-white shadow-soft transition-opacity hover:opacity-90"
-              >
-                Order by email
-              </a>
+              <div className="mt-6">
+                <BuyButtons product={piece} />
+              </div>
               <p className="mt-3 text-xs text-muted">
                 Each bracelet is handmade to order. Sizing and stone variations welcome.
               </p>

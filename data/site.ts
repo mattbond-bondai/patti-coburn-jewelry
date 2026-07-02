@@ -15,14 +15,14 @@ export const siteConfig = {
   description:
     'Handcrafted Christian gemstone jewelry by Patti Coburn. Home of the Glimpse of Heaven bracelet, inspired by the twelve foundation stones of Revelation 21:19-20.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://patticoburnjewelry.com',
-  email: 'patti@ccplano.com',
+  email: 'patticoburnjewelry@gmail.com',
   location: 'Plano, Texas'
 }
 
 export const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/glimpse-of-heaven/', label: 'A Glimpse of Heaven' },
-  { href: '/collection/', label: 'Collection' },
+  { href: '/collection/', label: 'Shop' },
   { href: '/bible-study/', label: 'Bible Study' },
   { href: '/about/', label: 'About Patti' },
   { href: '/contact/', label: 'Contact' }
@@ -56,58 +56,5 @@ export const foundationStones: FoundationStone[] = [
   { order: 12, name: 'Amethyst', color: 'Royal purple', swatch: '#7d4f9e', meaning: 'Completion, kingship, and rest' }
 ]
 
-export interface Piece {
-  slug: string
-  name: string
-  image: string
-  alt: string
-  description: string
-  details: string[]
-  featured?: boolean
-}
-
-export const pieces: Piece[] = [
-  {
-    slug: 'glimpse-of-heaven-bracelet',
-    name: 'A Glimpse of Heaven Bracelet',
-    image: asset('/images/glimpse-of-heaven-bracelet.png'),
-    alt: 'A Glimpse of Heaven bracelet with twelve colorful gemstones, sterling silver spacers, and a silver cross charm',
-    description:
-      'Our signature piece. Twelve gemstones for the twelve foundation stones of the New Jerusalem, finished with a sterling silver cross. A wearable reminder of our eternal home.',
-    details: [
-      'All twelve foundation stones of Revelation 21:19-20',
-      'Genuine gemstones, freshwater pearls, and Swarovski crystals',
-      'Sterling silver and Bali silver accents',
-      'Sterling silver cross charm and lobster clasp'
-    ],
-    featured: true
-  },
-  {
-    slug: 'gemstone-silk-knotted-necklace',
-    name: 'Gemstone Silk Knotted Necklace',
-    image: asset('/images/gemstone-silk-knotted-necklace.png'),
-    alt: 'Hand-knotted silk necklace with aquamarine, freshwater pearls, peridot, turquoise, garnet, and citrine gemstones',
-    description:
-      'A 19-inch necklace strung on hand-knotted silk in the old-world tradition. Aquamarine, freshwater pearls, peridot, turquoise, garnet, and citrine with Bali and sterling silver.',
-    details: [
-      'Aquamarine, peridot, turquoise, garnet, and citrine',
-      'Freshwater pearls and Swarovski crystals',
-      'Hand-knotted silk, 19 inches long',
-      'Sterling silver clasp with Bali silver accents'
-    ]
-  },
-  {
-    slug: 'one-of-a-kind-collection',
-    name: 'One-of-a-Kind Pieces',
-    image: asset('/images/one-of-a-kind-collection.png'),
-    alt: 'A colorful collection of handmade gemstone bracelets and necklaces in blues, greens, ambers, and reds',
-    description:
-      'Every piece Patti makes is one of a kind. Lava stone, jade, carnelian, amber, shell, and hand-picked artisan beads come together in designs you will not find anywhere else.',
-    details: [
-      'No two pieces alike',
-      'Natural stones chosen by hand',
-      'Custom requests welcome',
-      'Made with prayer and care in Texas'
-    ]
-  }
-]
+// Product data lives in public/data/products.json and is managed from the
+// /admin panel. See data/products.ts for the typed accessors.

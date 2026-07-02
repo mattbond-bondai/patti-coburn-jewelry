@@ -24,12 +24,41 @@ npm run build   # static site written to /out
 
 ## Content editing
 
-- Site name, email, tagline: `data/site.ts` (`siteConfig`)
-- Jewelry pieces (photos, descriptions, details): `data/site.ts` (`pieces`)
+Products, prices, photos, and store settings are managed from the admin panel at
+`/admin` on the live site. Sign in with a GitHub fine-grained personal access token
+(repo-scoped, Contents read/write). Edits commit to `public/data/products.json` and
+the site republishes automatically in about two minutes.
+
+Code-level content:
+
+- Site name, tagline: `data/site.ts` (`siteConfig`)
+- Contact email: admin Settings tab (also mirrored in `data/site.ts`)
 - The twelve stones and meanings: `data/site.ts` (`foundationStones`)
 - Bible studies: `app/bible-study/page.tsx`
 - About Patti: `app/about/page.tsx` (personalize this with her real story)
-- Photos live in `public/images/` (add new ones there and reference in `data/site.ts`)
+
+## Store and payments
+
+The storefront lives at `/collection/` with product pages, a cart, and checkout.
+Checkout picks the best available option automatically:
+
+1. If the checkout endpoint is configured (admin Settings), the cart pays by card
+   through Stripe Checkout. Deploy it with:
+
+   ```powershell
+   cd workers/checkout
+   npx wrangler login
+   npx wrangler secret put STRIPE_SECRET_KEY
+   npx wrangler deploy
+   ```
+
+   Paste the deployed URL into the admin Settings tab.
+
+2. If a product has a Stripe Payment Link (admin product editor), single-item
+   purchases use it directly. Create links at dashboard.stripe.com.
+
+3. Otherwise the order is sent by email to the shop address, and payment is
+   arranged by reply (Stripe invoice or payment link).
 
 ## SEO
 

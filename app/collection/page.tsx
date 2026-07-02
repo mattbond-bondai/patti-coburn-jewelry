@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { pieces, siteConfig } from '@/data/site'
+import Link from 'next/link'
+import { formatPrice, productImage, products, storeSettings } from '@/data/products'
 
 export const metadata: Metadata = {
-  title: 'Handmade Gemstone Jewelry Collection',
+  title: 'Shop Handmade Gemstone Jewelry',
   description:
-    'Browse one-of-a-kind handmade Christian jewelry by Patti Coburn: gemstone bracelets, silk-knotted necklaces, and custom faith-inspired designs.'
+    'Shop one-of-a-kind handmade Christian jewelry by Patti Coburn: gemstone bracelets, silk-knotted necklaces, and custom faith-inspired designs.'
 }
 
 export default function CollectionPage() {
@@ -14,7 +15,7 @@ export default function CollectionPage() {
       <section className="bg-heaven-gradient">
         <div className="mx-auto max-w-3xl px-5 py-16 text-center md:py-20">
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-primary">
-            The collection
+            The shop
           </p>
           <h1 className="mt-4 font-serif text-4xl leading-tight text-text md:text-5xl">
             One of a kind, every time
@@ -27,42 +28,37 @@ export default function CollectionPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-14">
-        <div className="space-y-14">
-          {pieces.map((piece, i) => (
-            <article
-              key={piece.slug}
-              className="grid items-center gap-8 md:grid-cols-2"
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {products.map((product) => (
+            <Link
+              key={product.slug}
+              href={`/collection/${product.slug}/`}
+              className="group overflow-hidden rounded-2xl border border-border bg-surface shadow-card transition-shadow hover:shadow-soft"
             >
-              <div className={`mx-auto w-full max-w-sm ${i % 2 === 1 ? 'md:order-2' : ''}`}>
-                <div className="overflow-hidden rounded-3xl bg-surface shadow-soft ring-1 ring-border">
-                  <Image
-                    src={piece.image}
-                    alt={piece.alt}
-                    width={720}
-                    height={900}
-                    className="h-auto w-full"
-                  />
-                </div>
+              <div className="relative aspect-[4/5] overflow-hidden bg-white">
+                <Image
+                  src={productImage(product)}
+                  alt={product.alt}
+                  width={576}
+                  height={720}
+                  className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.03]"
+                />
+                {product.sold && (
+                  <span className="absolute left-3 top-3 rounded-full bg-text/80 px-3 py-1 text-xs font-medium text-white">
+                    Sold
+                  </span>
+                )}
+                {product.featured && !product.sold && (
+                  <span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-medium text-white">
+                    Signature piece
+                  </span>
+                )}
               </div>
-              <div className={i % 2 === 1 ? 'md:order-1' : ''}>
-                <h2 className="font-serif text-3xl text-text">{piece.name}</h2>
-                <p className="mt-4 leading-relaxed text-muted">{piece.description}</p>
-                <ul className="mt-5 space-y-2 text-sm text-muted">
-                  {piece.details.map((d) => (
-                    <li key={d} className="flex items-start gap-2">
-                      <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      {d}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href={`mailto:${siteConfig.email}?subject=Inquiry: ${encodeURIComponent(piece.name)}`}
-                  className="mt-6 inline-block rounded-full bg-primary px-6 py-3 text-sm font-medium text-white shadow-soft transition-opacity hover:opacity-90"
-                >
-                  Ask about this piece
-                </a>
+              <div className="p-5">
+                <h2 className="font-serif text-xl text-text">{product.name}</h2>
+                <p className="mt-1 text-sm text-muted">{formatPrice(product.price)}</p>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </section>
@@ -75,7 +71,7 @@ export default function CollectionPage() {
             custom pieces with meaning woven into every stone.
           </p>
           <a
-            href={`mailto:${siteConfig.email}?subject=Custom jewelry request`}
+            href={`mailto:${storeSettings.contactEmail}?subject=Custom jewelry request`}
             className="mt-6 inline-block rounded-full border border-primary/40 bg-bg px-6 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/5"
           >
             Request a custom piece

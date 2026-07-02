@@ -1,0 +1,73 @@
+{
+  "settings": {
+    "contactEmail": "patticoburnjewelry@gmail.com",
+    "checkoutUrl": "",
+    "announcement": ""
+  },
+  "products": [
+    {
+      "slug": "glimpse-of-heaven-bracelet",
+      "name": "A Glimpse of Heaven Bracelet",
+      "price": null,
+      "images": [
+        "/images/glimpse-of-heaven-bracelet.png",
+        "/images/glimpse-of-heaven-cross-detail.png"
+      ],
+      "alt": "A Glimpse of Heaven bracelet with twelve colorful gemstones, sterling silver spacers, and a silver cross charm",
+      "description": "Our signature piece. Twelve gemstones for the twelve foundation stones of the New Jerusalem, finished with a sterling silver cross. A wearable reminder of our eternal home.",
+      "details": [
+        "All twelve foundation stones of Revelation 21:19-20",
+        "Genuine gemstones, freshwater pearls, and Swarovski crystals",
+        "Sterling silver and Bali silver accents",
+        "Sterling silver cross charm and lobster clasp",
+        "Handmade to order; sizing and stone variations welcome"
+      ],
+      "featured": true,
+      "oneOfAKind": false,
+      "inquireOnly": false,
+      "sold": false,
+      "hidden": false,
+      "paymentLink": ""
+    },
+    {
+      "slug": "gemstone-silk-knotted-necklace",
+      "name": "Gemstone Silk Knotted Necklace",
+      "price": null,
+      "images": ["/images/gemstone-silk-knotted-necklace.png"],
+      "alt": "Hand-knotted silk necklace with aquamarine, freshwater pearls, peridot, turquoise, garnet, and citrine gemstones",
+      "description": "A 19-inch necklace strung on hand-knotted silk in the old-world tradition. Aquamarine, freshwater pearls, peridot, turquoise, garnet, and citrine with Bali and sterling silver.",
+      "details": [
+        "Aquamarine, peridot, turquoise, garnet, and citrine",
+        "Freshwater pearls and Swarovski crystals",
+        "Hand-knotted silk, 19 inches long",
+        "Sterling silver clasp with Bali silver accents"
+      ],
+      "featured": false,
+      "oneOfAKind": true,
+      "inquireOnly": false,
+      "sold": false,
+      "hidden": false,
+      "paymentLink": ""
+    },
+    {
+      "slug": "one-of-a-kind-collection",
+      "name": "One-of-a-Kind Pieces",
+      "price": null,
+      "images": ["/images/one-of-a-kind-collection.png"],
+      "alt": "A colorful collection of handmade gemstone bracelets and necklaces in blues, greens, ambers, and reds",
+      "description": "Every piece Patti makes is one of a kind. Lava stone, jade, carnelian, amber, shell, and hand-picked artisan beads come together in designs you will not find anywhere else. Reach out to see what is currently on the worktable, or request a custom piece.",
+      "details": [
+        "No two pieces alike",
+        "Natural stones chosen by hand",
+        "Custom requests welcome",
+        "Made with prayer and care in Texas"
+      ],
+      "featured": false,
+      "oneOfAKind": true,
+      "inquireOnly": true,
+      "sold": false,
+      "hidden": false,
+      "paymentLink": ""
+    }
+  ]
+}

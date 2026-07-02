@@ -1,0 +1,9 @@
+name = "pcj-checkout"
+main = "src/index.ts"
+compatibility_date = "2026-06-01"
+
+[vars]
+SITE_URL = "https://patticoburnjewelry.com"
+
+# Set the secret once with:
+#   wrangler secret put STRIPE_SECRET_KEY

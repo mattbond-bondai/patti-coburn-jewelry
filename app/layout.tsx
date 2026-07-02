@@ -4,7 +4,10 @@ import './globals.css'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import JSONLD from '@/components/jsonld'
+import { CartProvider } from '@/components/cart-provider'
+import CartDrawer from '@/components/cart-drawer'
 import { siteConfig } from '@/data/site'
+import { storeSettings } from '@/data/products'
 
 const serif = Cormorant_Garamond({
   subsets: ['latin'],
@@ -72,9 +75,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#content" className="skip-link">
           Skip to content
         </a>
-        <Header />
-        <main id="content">{children}</main>
-        <Footer />
+        <CartProvider>
+          {storeSettings.announcement && (
+            <p className="bg-primary px-4 py-2 text-center text-sm text-white">
+              {storeSettings.announcement}
+            </p>
+          )}
+          <Header />
+          <main id="content">{children}</main>
+          <Footer />
+          <CartDrawer />
+        </CartProvider>
         <JSONLD
           data={{
             '@context': 'https://schema.org',

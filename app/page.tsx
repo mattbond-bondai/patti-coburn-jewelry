@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import StoneGrid from '@/components/stone-grid'
-import { asset, pieces, siteConfig } from '@/data/site'
+import { asset, siteConfig } from '@/data/site'
+import { formatPrice, productImage, products } from '@/data/products'
 
 export const metadata: Metadata = {
   title: 'Patti Coburn Jewelry | Faith-Inspired Handmade Gemstone Jewelry',
@@ -11,8 +12,8 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
-  const featured = pieces.find((p) => p.featured)!
-  const others = pieces.filter((p) => !p.featured)
+  const featured = products.find((p) => p.featured) ?? products[0]
+  const others = products.filter((p) => p.slug !== featured.slug)
 
   return (
     <>
@@ -42,7 +43,7 @@ export default function HomePage() {
                 href="/collection/"
                 className="rounded-full border border-primary/40 bg-surface px-6 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/5"
               >
-                Browse the Collection
+                Shop the Collection
               </Link>
             </div>
             <div className="mt-10">
@@ -56,7 +57,7 @@ export default function HomePage() {
           <div className="relative mx-auto w-full max-w-sm">
             <div className="overflow-hidden rounded-3xl bg-surface shadow-soft ring-1 ring-border">
               <Image
-                src={featured.image}
+                src={productImage(featured)}
                 alt={featured.alt}
                 width={576}
                 height={1024}
@@ -131,26 +132,28 @@ export default function HomePage() {
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[featured, ...others].map((piece) => (
-              <article
+              <Link
                 key={piece.slug}
-                className="overflow-hidden rounded-2xl border border-border bg-bg shadow-card"
+                href={`/collection/${piece.slug}/`}
+                className="group overflow-hidden rounded-2xl border border-border bg-bg shadow-card transition-shadow hover:shadow-soft"
               >
                 <div className="aspect-[4/5] overflow-hidden bg-white">
                   <Image
-                    src={piece.image}
+                    src={productImage(piece)}
                     alt={piece.alt}
                     width={576}
                     height={720}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.03]"
                   />
                 </div>
                 <div className="p-5">
                   <h3 className="font-serif text-xl text-text">{piece.name}</h3>
+                  <p className="mt-1 text-sm text-primary">{formatPrice(piece.price)}</p>
                   <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">
                     {piece.description}
                   </p>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
           <div className="mt-10 text-center">
@@ -158,7 +161,7 @@ export default function HomePage() {
               href="/collection/"
               className="rounded-full border border-primary/40 bg-bg px-6 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/5"
             >
-              See the full collection
+              Shop the full collection
             </Link>
           </div>
         </div>
