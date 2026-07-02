@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Scripture from '@/components/scripture'
-import { siteConfig } from '@/data/site'
+import { asset, siteConfig } from '@/data/site'
 
 export const metadata: Metadata = {
   title: 'About Patti Coburn | Faith-Inspired Jewelry Artist',
@@ -29,7 +29,7 @@ export default function AboutPage() {
           <div className="mx-auto w-full max-w-sm">
             <div className="overflow-hidden rounded-3xl bg-surface shadow-soft ring-1 ring-border">
               <Image
-                src="/images/one-of-a-kind-collection.png"
+                src={asset('/images/one-of-a-kind-collection.png')}
                 alt="A colorful assortment of Patti Coburn's handmade gemstone jewelry"
                 width={576}
                 height={1024}

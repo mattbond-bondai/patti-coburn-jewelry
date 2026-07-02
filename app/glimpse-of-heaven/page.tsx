@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Scripture from '@/components/scripture'
 import StoneGrid from '@/components/stone-grid'
 import JSONLD from '@/components/jsonld'
-import { pieces, siteConfig } from '@/data/site'
+import { asset, pieces, siteConfig } from '@/data/site'
 
 export const metadata: Metadata = {
   title: 'A Glimpse of Heaven Bracelet | The Twelve Foundation Stones of Revelation 21',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: 'A Glimpse of Heaven Bracelet',
     description:
       'All twelve foundation stones of the New Jerusalem in one handcrafted bracelet. A wearable reminder of our eternal home.',
-    images: ['/images/glimpse-of-heaven-bracelet.png']
+    images: [`${process.env.NEXT_PUBLIC_SITE_URL || 'https://patticoburnjewelry.com'}/images/glimpse-of-heaven-bracelet.png`]
   }
 }
 
@@ -53,7 +53,7 @@ export default function GlimpseOfHeavenPage() {
             </div>
             <div className="overflow-hidden rounded-3xl bg-surface shadow-soft ring-1 ring-border">
               <Image
-                src="/images/glimpse-of-heaven-cross-detail.png"
+                src={asset('/images/glimpse-of-heaven-cross-detail.png')}
                 alt="The Glimpse of Heaven bracelet laid out to show the sterling silver cross charm and clasp"
                 width={576}
                 height={1024}

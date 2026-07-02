@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: '/images/glimpse-of-heaven-bracelet.png',
+        url: `${siteConfig.url}/images/glimpse-of-heaven-bracelet.png`,
         width: 576,
         height: 1024,
         alt: 'A Glimpse of Heaven bracelet by Patti Coburn'
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Patti Coburn Jewelry',
     description: siteConfig.description,
-    images: ['/images/glimpse-of-heaven-bracelet.png']
+    images: [`${siteConfig.url}/images/glimpse-of-heaven-bracelet.png`]
   },
   robots: {
     index: true,

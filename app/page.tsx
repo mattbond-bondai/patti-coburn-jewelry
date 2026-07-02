@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import StoneGrid from '@/components/stone-grid'
-import { pieces, siteConfig } from '@/data/site'
+import { asset, pieces, siteConfig } from '@/data/site'
 
 export const metadata: Metadata = {
   title: 'Patti Coburn Jewelry | Faith-Inspired Handmade Gemstone Jewelry',
@@ -108,7 +108,7 @@ export default function HomePage() {
           <div className="order-1 mx-auto w-full max-w-sm md:order-2">
             <div className="overflow-hidden rounded-3xl bg-surface shadow-soft ring-1 ring-border">
               <Image
-                src="/images/glimpse-of-heaven-cross-detail.png"
+                src={asset('/images/glimpse-of-heaven-cross-detail.png')}
                 alt="Close-up of the Glimpse of Heaven bracelet showing the sterling silver cross charm"
                 width={576}
                 height={1024}

@@ -1,3 +1,14 @@
+/**
+ * Static export does not apply Next's basePath to unoptimized image srcs,
+ * so every asset URL must be prefixed manually (e.g. GitHub Pages project
+ * sites live under /repo-name).
+ */
+export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
+export function asset(path: string): string {
+  return `${basePath}${path}`
+}
+
 export const siteConfig = {
   name: 'Patti Coburn Jewelry',
   tagline: 'Faith-inspired handmade gemstone jewelry',
@@ -59,7 +70,7 @@ export const pieces: Piece[] = [
   {
     slug: 'glimpse-of-heaven-bracelet',
     name: 'A Glimpse of Heaven Bracelet',
-    image: '/images/glimpse-of-heaven-bracelet.png',
+    image: asset('/images/glimpse-of-heaven-bracelet.png'),
     alt: 'A Glimpse of Heaven bracelet with twelve colorful gemstones, sterling silver spacers, and a silver cross charm',
     description:
       'Our signature piece. Twelve gemstones for the twelve foundation stones of the New Jerusalem, finished with a sterling silver cross. A wearable reminder of our eternal home.',
@@ -74,7 +85,7 @@ export const pieces: Piece[] = [
   {
     slug: 'gemstone-silk-knotted-necklace',
     name: 'Gemstone Silk Knotted Necklace',
-    image: '/images/gemstone-silk-knotted-necklace.png',
+    image: asset('/images/gemstone-silk-knotted-necklace.png'),
     alt: 'Hand-knotted silk necklace with aquamarine, freshwater pearls, peridot, turquoise, garnet, and citrine gemstones',
     description:
       'A 19-inch necklace strung on hand-knotted silk in the old-world tradition. Aquamarine, freshwater pearls, peridot, turquoise, garnet, and citrine with Bali and sterling silver.',
@@ -88,7 +99,7 @@ export const pieces: Piece[] = [
   {
     slug: 'one-of-a-kind-collection',
     name: 'One-of-a-Kind Pieces',
-    image: '/images/one-of-a-kind-collection.png',
+    image: asset('/images/one-of-a-kind-collection.png'),
     alt: 'A colorful collection of handmade gemstone bracelets and necklaces in blues, greens, ambers, and reds',
     description:
       'Every piece Patti makes is one of a kind. Lava stone, jade, carnelian, amber, shell, and hand-picked artisan beads come together in designs you will not find anywhere else.',
